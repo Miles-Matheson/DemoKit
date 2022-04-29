@@ -1,0 +1,6 @@
+framework module QianYuAPI {
+  umbrella header "QianYuAPI.h"
+
+  export *
+  module * { export * }
+}

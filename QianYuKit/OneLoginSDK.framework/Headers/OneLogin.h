@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol OneLoginDelegate;
 
+//DEPRECATED_MSG_ATTRIBUTE("Please Use OneLoginPro instead.")
 @interface OneLogin : NSObject
 
 /**
@@ -31,11 +32,18 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  向SDK注册AppID
  
- @discussion `AppID`通过后台注册获得
+ @discussion `AppID`通过后台注册获得，从极验后台获取该AppID，AppID需与bundleID配套
 
  @param appID 产品ID
  */
 + (void)registerWithAppID:(NSString *)appID;
+
+/**
+ * 判断是否已经注册
+ *
+ * @return 已注册，返回 YES，未注册，返回 NO
+ */
++ (BOOL)hasRegistered;
 
 /**
  设置代理对象
@@ -50,6 +58,14 @@ NS_ASSUME_NONNULL_BEGIN
  @param timeout 超时时长
  */
 + (void)setRequestTimeout:(NSTimeInterval)timeout;
+
+/**
+ 分别设置预取号和取号请求超时时长。默认时长8s。
+
+ @param preGetTokenTimeout 预取号超时时长
+ @param requestTokenTimeout 取号超时时长
+ */
++ (void)setRequestTimeout:(NSTimeInterval)preGetTokenTimeout requestTokenTimeout:(NSTimeInterval)requestTokenTimeout;
 
 /**
  预取号接口
@@ -93,8 +109,8 @@ NS_ASSUME_NONNULL_BEGIN
  @discussion 预取号成功后存在的有效期
  
  有效期内需要调用 `requestTokenWithViewController:viewModel:completion:`,
- 否则需要重新访问 `preGetTokenWithCompletion:`。 其中中国移动有效期为 1 小时,
- 中国联通和中国电信为 10 分钟。
+ 否则需要重新访问 `preGetTokenWithCompletion:`。 其中中国移动和中国电信有效期为 1 小时,
+ 中国联通为 10 分钟。
 
  @param completion 处理回调
  */
@@ -163,15 +179,52 @@ NS_ASSUME_NONNULL_BEGIN
                              viewModel:(nullable OLAuthViewModel *)viewModel
                             completion:(void(^)(NSDictionary * _Nullable result))completion;
 
-
 /**
- 关闭当前的授权页面
+ @abstract 关闭当前的授权页面
+ 
+ @param animated 是否需要动画
+ @param completion 关闭页面后的回调
  
  @discussion
  请不要使用其他方式关闭授权页面, 否则可能导致 OneLogin 无法再次调起
  */
++ (void)dismissAuthViewController:(BOOL)animated completion:(void (^ __nullable)(void))completion;
 + (void)dismissAuthViewController:(void (^ __nullable)(void))completion;
 
+/**
+ 停止点击授权页面登录按钮之后的加载进度条
+ */
++ (void)stopLoading;
+
+/**
+ enable授权页面登录按钮
+ */
++ (void)enableAuthButton;
+
+/**
+ disable授权页面登录按钮
+ */
++ (void)disableAuthButton;
+
+/**
+ * @abstract 服务条款左边复选框是否勾选
+ */
++ (BOOL)isProtocolCheckboxChecked;
+
+
+/**
+  @abstract 设置服务条款左边复选框勾选状态
+  @param isChecked 是否勾选
+ */
++ (void)setProtocolCheckState:(BOOL)isChecked;
+
+/**
+ * @abstract 预取号拿到的token是否还在有效期
+ *
+ * @return YES - 还在有效期，可直接调用requestTokenWithViewController方法进行取号
+ *         NO  - 已失效，需重新调用preGetTokenWithCompletion进行预取号之后再调用requestTokenWithViewController方法进行取号
+ */
++ (BOOL)isPreGettedTokenValidate;
 
 /**
  获取SDK版本号
@@ -186,6 +239,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param enabled YES，允许打印日志 NO，禁止打印日志
  */
 + (void)setLogEnabled:(BOOL)enabled;
++ (void)setCMLogEnabled:(BOOL)enabled;
 
 /**
  * @abstract 指示是否打印日志的状态
@@ -193,6 +247,44 @@ NS_ASSUME_NONNULL_BEGIN
  * @return YES，允许打印日志 NO，禁止打印日志
  */
 + (BOOL)isLogEnabled;
+
+/**
+ * @abstract 自定义接口，自定义之后，SDK内部HTTP请求就会使用该自定义的接口
+ *
+ * @param URL 接口URL
+ */
++ (void)customInterfaceURL:(const NSString * __nullable)URL;
+
+/**
+ * @abstract 获取当前授权页面对应的ViewController
+ *
+ * @return 当前授权页面对应的ViewController
+ */
++ (UIViewController * _Nullable)currentAuthViewController;
+
+/**
+ * @abstract 更新授权页面一键登录按钮的文案
+ *
+ * @param authButtonTitle 一键登录按钮的文案
+ */
++ (void)updateAuthButtonTitle:(NSAttributedString *)authButtonTitle;
+
+/**
+ * @abstract 删除预取号的缓存
+ */
++ (void)deletePreResultCache;
+
+/**
+ * @abstract 开始取号
+ */
++ (void)startRequestToken;
+
++ (void)setOperatorParams:(NSDictionary *)params;
+
+
+/// 仅私有化支持
+/// @param option 加密方式
++ (void)setAlgorithmOption:(OLAlgorithmOption)option;
 
 @end
 

@@ -19,6 +19,10 @@ typedef NS_ENUM(NSInteger, OLNetworkType) {
     OLNetworkTypeCellularAndWIFI,
 };
 
+extern NSString * _Nonnull const OLNetworkNone;
+extern NSString * _Nonnull const OLNetworkWIFI;
+extern NSString * _Nonnull const OLNetworkCellular;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface OLNetworkInfo : NSObject
@@ -29,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
  @discussion
  @"CM" 移动, @"CU" 联通, @"CT" 电信
  */
-@property (nullable, nonatomic, strong) NSString *carrierName;
+@property (nullable, nonatomic, copy) NSString *carrierName;
 
 /**
  网络类型
@@ -47,6 +51,9 @@ NS_ASSUME_NONNULL_BEGIN
  具体的网络类型，如2G、3G、4G、WIFI
  */
 @property (nonatomic, copy) NSString *detailNetworkType;
+
+@property (nullable, nonatomic, copy) NSString *originCarrierName;
+@property (nonatomic, assign) OLNetworkType originNetworkType;
 
 @end
 

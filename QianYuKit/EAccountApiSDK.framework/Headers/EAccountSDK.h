@@ -7,16 +7,18 @@
 //
 
 /**
- V 1.5.1 修复已知的bug
+ 定制版SDK v3.8.11 20211203
  */
 
 #import <Foundation/Foundation.h>
+#import "EAccountPreLoginConfigModel.h"
+#import "EAccountCTEConfig.h"
 
 /**
  声明一个block
  @param resultDic 网络返回的data的解析结果
  */
-typedef   void (^successHandler) ( NSDictionary * _Nonnull resultDic);
+typedef   void (^successHandler) (NSDictionary * _Nonnull resultDic);
 
 /**
  声明一个block
@@ -28,68 +30,58 @@ typedef   void (^failureHandler) (NSError * _Nonnull error);
 
 /**
  初始化SDK
- @param appKey 接入方在账号平台领取的appKey
+ @param appKey 接入方在账号平台领取的appId
  @param appSecrect 接入方在账号平台领取的appSecrect
  */
 + (void)initWithSelfKey:(NSString * _Nonnull)appKey
               appSecret:(NSString * _Nonnull)appSecrect;
 
-
-/**
- 初始化SDK,之后使用。默认为正式环境的bundleID,需要使用测试环境的bundleId（通常是企业证书重签名改变的bundleId），请添加这个方法，在发布APP的时候请确保没有使用该方法。
- */
-
-+(void)setTestBundleId;
-
 /**
  *@description 预登录接口
- @param apiTimeoutInterval 接口超时时间，传0或者小于0的数，则默认为3s
+ @param model 接口超时时间配置
  */
 
-+ (void)requestPreLogin:(NSTimeInterval)apiTimeoutInterval
++ (void)requestPRELogin:(EAccountPreLoginConfigModel * _Nonnull)model
              completion:(nonnull successHandler)completion
                 failure:(nonnull failureHandler)fail;
 
 /**
- *@description 登录接口
- *@param accessCode 预取号获取d的accessCode
+ 控制台日志输出控制（默认关闭）
+ @param enable 开关参数
  */
-+ (void)requestLogin:(NSString * _Nonnull)accessCode
- withTimeoutInterval:(NSTimeInterval)apiTimeoutInterval
-          completion:(nonnull successHandler)completion
-             failure:(nonnull failureHandler)fail;
++ (void)printConsoleEnable:(BOOL)enable;
 
 /**
- *@description 手机号校验
- @param apiTimeoutInterval 接口超时时间，传0或者小于0的数，则默认为3s
- */
+@description   获取当前流量卡运营商信息
+@return NSString    "CT"    中国电信 / "CM"     中国移动 / "CU"     中国联联通 / "UN"    未知
+*/
++ (NSString *)getOperatorType;
 
-+ (void)requestPreVerification:(NSTimeInterval)apiTimeoutInterval
-                    completion:(nonnull successHandler)completion
-                       failure:(nonnull failureHandler)fail;
 /**
- *@description 预取号
+@description   是否开启蜂窝数据
+*/
++ (BOOL)isCellularDataEnable;
+
+/**
+ @description 预登录接口 已废弃
  @param apiTimeoutInterval 接口超时时间，传0或者小于0的数，则默认为3s
  */
++ (void)requestPreLogin:(NSTimeInterval)apiTimeoutInterval
+             completion:(nonnull successHandler)completion
+                failure:(nonnull failureHandler)fail DEPRECATED_MSG_ATTRIBUTE("Please use `requestPRELogin:completion:failure:` instead");
 
+/**
+ @description 预登录接口 已废弃
+ @param apiTimeoutInterval 接口超时时间，传0或者小于0的数，则默认为3s
+ */
 + (void)getMobileCodeWithTimeout:(NSTimeInterval)apiTimeoutInterval
                       completion:(nonnull successHandler)completion
-                         failure:(nonnull failureHandler)fail  DEPRECATED_MSG_ATTRIBUTE("Method deprecated. Use `requestPreLogin:completion:failure:`");
+                         failure:(nonnull failureHandler)fail DEPRECATED_MSG_ATTRIBUTE("Please use `requestPreLogin:completion:failure:` instead");
 
-/**
- *@description 网络认证
- *@param accessCode 预取号获取d的accessCode
- */
-+ (void)gatewayAuthWithAccessCode:(NSString * _Nonnull)accessCode
-              withTimeoutInterval:(NSTimeInterval)apiTimeoutInterval
-                       completion:(nonnull successHandler)completion
-                          failure:(nonnull failureHandler)fail DEPRECATED_MSG_ATTRIBUTE("Method deprecated. Use `requestLogin:completion:failure:`");
-/**
- *@description 手机号校验
- @param apiTimeoutInterval 接口超时时间，传0或者小于0的数，则默认为3s
- */
++ (void)setDomainName:(EAccountCTEConfig * _Nonnull)config;
 
-+ (void)getVerificationCodeWithTimeout:(NSTimeInterval)apiTimeoutInterval
-                            completion:(nonnull successHandler)completion
-                               failure:(nonnull failureHandler)fail DEPRECATED_MSG_ATTRIBUTE("Method deprecated. Use `requestPreVerification:completion:failure:`");
+#pragma -mark ----------------供其他工程内部调用 打包时删除-----------------------
+
++ (void)startReportLog:(NSMutableDictionary * _Nonnull)logDic;
+
 @end

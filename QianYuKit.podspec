@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "QianYuKit"
-  spec.version      = "0.0.11"
+  spec.version      = "0.0.12"
   spec.summary      = "this is a test"
 
   # This description is used to generate tags and improve search results.
@@ -125,7 +125,7 @@ Pod::Spec.new do |spec|
    spec.libraries = "c++.1", "sqlite3.0", "z.1.2.8"
 
 
-spec.vendored_frameworks = "QianYuKit/account_login_sdk_noui_core.framework", "QianYuKit/EAccountApiSDK.framework", "QianYuKit/TYRZSDK.framework", "QianYuKit/OneLoginSDK.framework"
+spec.vendored_frameworks = "QianYuKit/account_login_sdk_noui_core.framework", "QianYuKit/EAccountApiSDK.framework", "QianYuKit/OneLoginSDK.framework", "QianYuKit/QianYuAPI.framework","TYRZUISDK.framework"
 
 
 spec.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC', 'VALID_ARCHS' => 'x86_64 armv7 arm64'  }
