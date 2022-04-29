@@ -125,7 +125,11 @@ Pod::Spec.new do |spec|
    spec.libraries = "c++.1", "sqlite3.0", "z.1.2.8"
 
 
+<<<<<<< HEAD
 spec.vendored_frameworks = "QianYuKit/account_login_sdk_noui_core.framework", "QianYuKit/EAccountApiSDK.framework", "QianYuKit/OneLoginSDK.framework", "QianYuKit/QianYuAPI.framework","TYRZUISDK.framework"
+=======
+spec.vendored_frameworks = "QianYuKit/account_login_sdk_noui_core.framework", "QianYuKit/EAccountApiSDK.framework", "QianYuKit/TYRZSDK.framework", "QianYuKit/OneLoginSDK.framework","QianYuKit/QianYuKit.framework"
+>>>>>>> 3d3d79ca6b48867d9642b420aa0b737e5ec70298
 
 
 spec.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC', 'VALID_ARCHS' => 'x86_64 armv7 arm64'  }
