@@ -1,0 +1,63 @@
+/*
+ Localizable.strings
+ Unity-iPhone
+ 
+ Created by Allone on 2019/7/9.
+ 
+ 使用方法：
+ NSString *name1= NSLocalizedString(@"SDK_Name", nil);
+ NSString *name2 = NSLocalizedStringFromTable(@"SDK_Name", @"Localizable", nil);
+ */
+
+"SDK_Name" = "天天爱捕鱼";
+
+/******************** Holder ********************/
+"Holder_NamePhone" = "用户名/手机号";
+"Holder_Name" = "请输入用户名";
+"Holder_Phone" = "请输入手机号";
+"Holder_Code" = "请输入验证码";
+"Holder_Password" = "请输入密码";
+"Holder_OldPassword" = "请输入当前密码";
+"Holder_NewPassword" = "请输入新密码";
+"Holder_ReNewPassword" = "请再输入新密码";
+
+/******************** Button ********************/
+"Button_Login" = "登陆";
+"Button_Regist" = "注册";
+"Button_Found" = "忘记密码？";
+"Button_nRegist" = "注册新号";
+"Button_Code" = "发送验证码";
+"Button_RandomName" = "随机用户名";
+"Button_PhoneRegist" = "手机号注册";
+"Button_NameRegist" = "用户名快速注册";
+"Button_Reset" = "重置密码";
+"Button_SaveAlbum" = "保存到相册";
+"Button_Skip" = "跳过";
+
+"Button_Next" = "下一步";
+"Button_BindPhone" = "绑定手机";
+"Button_ChangePhone" = "变更手机号";
+"Button_SureReplace" = "确认替换";
+"Button_ChangePassword" = "修改密码";
+"Button_LoginOut" = "退出账号";
+"Button_Bind" = "绑定";
+"Button_SureChange" = "确定修改";
+
+"Button_Pay" = "立刻支付";
+"Button_OtherPay" = "其他支付";
+
+/******************** Title ********************/
+"Title_Name" = "用户名：";
+"Title_Password" = "密码：";
+"Title_ServiceQQ" = "客服QQ：";
+"Title_ServicePhone" = "客服电话：";
+"Title_BindPhone" = "已绑定手机：";
+"Title_NoBindPhone" = "注：必须绑定手机号才能找回密码";
+"Title_SaveAlbumTitle" = "请牢记账号信息";
+"Title_SaveAlbumTipOne" = "强烈建议您截图保存账号信息";
+"Title_SaveAlbumTipTwo" = "您也可以在账号管理界面绑定手机";
+
+"Title_GoodsName" = "购买物品名称";
+"Title_PayType" = "选择支付方式";
+
+/******************** Tip ********************/

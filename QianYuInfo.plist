@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>千炮捕鱼-iOS版</string>
+	<key>appId</key>
+	<string>6040</string>
+	<key>clientKey</key>
+	<string>167b02b0396e46969374993ffe15862f</string>
+	<key>ologinKey</key>
+	<string>fcfd837053d91ebf8cffe97bea5f5756</string>
+</dict>
+</plist>
