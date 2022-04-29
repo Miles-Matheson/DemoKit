@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "QianYuKit"
-  spec.version      = "0.0.13.1"
+  spec.version      = "0.0.13.2"
   spec.summary      = "this is a test"
 
   # This description is used to generate tags and improve search results.
@@ -65,7 +65,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.platform     = :ios
-   spec.platform     = :ios, "8.0"
+   spec.platform     = :ios, "10.0"
 
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"
@@ -123,11 +123,9 @@ Pod::Spec.new do |spec|
   # spec.library   = "iconv"
    spec.libraries = "c++.1", "sqlite3.0", "z.1.2.8"
 
+   spec.vendored_frameworks = "QianYuKit/QianYuAPI.framework",
 
-spec.vendored_frameworks = "QianYuKit/QianYuAPI.framework",
-
-
-spec.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC', 'VALID_ARCHS' => 'x86_64 armv7 arm64'  }
+  spec.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC'  }
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  If your library depends on compiler flags you can set them in the xcconfig hash
