@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "QianYuKit"
-  spec.version      = "0.0.13"
+  spec.version      = "0.0.13.1"
   spec.summary      = "this is a test"
 
   # This description is used to generate tags and improve search results.
@@ -90,8 +90,6 @@ Pod::Spec.new do |spec|
   #  For header files it will include any header in the folder.
   #  Not including the public_header_files will make all headers public.
   #
-
-   spec.source_files  = "QianYuKit/OneLoginSDK.framework/Headers/*.{h}"
    spec.source_files  = "QianYuKit/QianYuAPI.framework/Headers/*.{h}"
   # spec.source_files  = "QianYuKit/frameworks/*.{framework}"
   # spec.exclude_files = "QianYuKit"
@@ -126,7 +124,7 @@ Pod::Spec.new do |spec|
    spec.libraries = "c++.1", "sqlite3.0", "z.1.2.8"
 
 
-spec.vendored_frameworks = "QianYuKit/account_login_sdk_noui_core.framework", "QianYuKit/EAccountApiSDK.framework", "QianYuKit/OneLoginSDK.framework", "QianYuKit/QianYuAPI.framework","TYRZUISDK.framework"
+spec.vendored_frameworks = "QianYuKit/QianYuAPI.framework",
 
 
 spec.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC', 'VALID_ARCHS' => 'x86_64 armv7 arm64'  }
@@ -139,6 +137,6 @@ spec.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC', 'VALID_ARCHS' => 'x86_
   # spec.requires_arc = true
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  # spec.dependency "JSONKit", "~> 1.4"
+   spec.dependency "OneLoginSDK-iOS", "~> 2.7.5"
 
 end
