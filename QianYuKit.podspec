@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "QianYuKit"
-  spec.version      = "0.0.13.2"
+  spec.version      = "0.0.13.3"
   spec.summary      = "this is a test"
 
   # This description is used to generate tags and improve search results.
@@ -125,7 +125,7 @@ Pod::Spec.new do |spec|
 
    spec.vendored_frameworks = "QianYuKit/QianYuAPI.framework",
 
-  spec.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC'  }
+  #spec.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC'  }
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  If your library depends on compiler flags you can set them in the xcconfig hash
