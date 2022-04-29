@@ -1,0 +1,6 @@
+framework module QianYuKit {
+  umbrella header "QianYuKit.h"
+
+  export *
+  module * { export * }
+}
